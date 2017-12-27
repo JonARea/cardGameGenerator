@@ -7,6 +7,8 @@ const App = (props) => (
   <BrowserRouter>
     <div>
       <h1>Reacting from App.js</h1>
+      <h2>This is red
+      </h2>
       <p>
         {'Redux store: ' + props.statePiece}
       </p>

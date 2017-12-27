@@ -5,6 +5,7 @@ const volleyball = require('volleyball')
 const passport = require('passport')
 const session = require('express-session')
 const path = require('path')
+const db = require('./db')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -13,9 +14,32 @@ app.use(volleyball)
 //api routes
 app.use('/api', require('./apiRoutes'))
 
-//static route
+//static routes
 app.use(express.static(path.join(__dirname, '../browser/public')))
 
+//authentication and session logging
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'a wildly insecure secret',
+  resave: false,
+  saveUninitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+// passport.serializeUser((user, done) => {
+//   try {
+//     done(null, user.id)
+//   } catch (err) {
+//     done(err)
+//   }
+// })
+
+// passport.deserializeUser((id, done) => {
+//   User.findById(id)
+//    .then(user => done(null, user))
+//    .catch(done)
+// })
 
 //error handling
 app.use((err, req, res, next) => {
@@ -25,6 +49,9 @@ app.use((err, req, res, next) => {
 })
 
 const port = 3000
+
+//db.sync()
+  //.then(() => app.listen.....)
 
 app.listen(port, () => console.log('Listening on port ' + port))
 
