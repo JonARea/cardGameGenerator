@@ -16,6 +16,8 @@ router.delete('/', (req, res, next) => {
 
 })
 
+router.use('/auth', require('./auth'))
+
 //handle unkown uri
 router.use((req, res, next) => {
   const err = new Error('Not found.')
