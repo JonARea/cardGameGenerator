@@ -1,10 +1,10 @@
-import SomeAction from '../actions'
+import {SET_CURRENT_USER} from '../actions'
 
 export default function (state = 'A new and virgin state', action) {
   switch (action.type) {
-    case SomeAction:
+    case SET_CURRENT_USER:
       return {
-        statePiece: action.statePiece
+        currentUser: action.currentUser
       }
     default:
       return state

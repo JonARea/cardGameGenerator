@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux'
-import statePiece from './someStateReducer'
+import currentUser from './userReducer'
 
-export default combineReducers({statePiece})
+export default combineReducers({currentUser})

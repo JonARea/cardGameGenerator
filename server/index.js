@@ -5,7 +5,7 @@ const volleyball = require('volleyball')
 const passport = require('passport')
 const session = require('express-session')
 const path = require('path')
-const db = require('./db')
+const db = require('./db/_db')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))

@@ -10,12 +10,12 @@ const App = (props) => (
       <h2>This is red
       </h2>
       <p>
-        {'Redux store: ' + props.statePiece}
+        {'Redux store: ' + props.reduxState}
       </p>
     </div>
   </BrowserRouter>
 )
 
-const mapState = ({statePiece}) => ({statePiece})
+const mapState = (state) => ({reduxState: JSON.stringify(state)})
 
 export default connect(mapState, null)(App)

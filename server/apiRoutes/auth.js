@@ -26,8 +26,8 @@ const verifyCallbackForGoogle = (token, refreshToken, profile, done) => {
 const DOMAIN_NAME = ''
 
 const myGoogleStrategy = new GoogleStrategy({
- clientID: process.env.GOOGLE_CLIENT_ID,
- clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+ clientID: process.env.GOOGLE_CLIENT_ID || 'myID',
+ clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'mySecret',
  callbackURL: DOMAIN_NAME + '/api/auth/google/cb'
 }, verifyCallbackForGoogle)
 
@@ -63,7 +63,7 @@ router.get('/me', (req, res, next) => {
   else res.send({})
 })
 
-router.get('/local', passport.authenticate('local'), (req, res) => {
+router.post('/local', passport.authenticate('local'), (req, res) => {
   if (req.user.email) res.send(req.user)
   else res.status(401).send('Incorrect Username or Password')
 })
