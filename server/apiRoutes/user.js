@@ -6,3 +6,5 @@ router.post('/', (req, res, next) => {
     .then(user => res.status(201).json(user))
     .catch(next)
 })
+
+module.exports = router
