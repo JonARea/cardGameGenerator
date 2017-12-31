@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config()
-}
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -14,11 +12,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(volleyball)
 
-//api routes
-app.use('/api', require('./apiRoutes'))
-
-//static routes
-app.use(express.static(path.join(__dirname, '../browser/public')))
 
 //authentication and session logging
 app.use(session({
@@ -40,9 +33,29 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id)
-   .then(user => done(null, user))
-   .catch(done)
+  .then(user => done(null, user))
+  .catch(done)
 })
+
+//api routes
+app.use('/api', require('./apiRoutes'))
+
+
+app.get('/logout', (req, res, next) => {
+  req.logOut()
+  res.sendStatus(200)
+})
+
+const validFrontendRoutes = ['/', '/stories', '/users', '/stories/:id', '/users/:id', '/signup', '/login']
+const indexPath = path.join(__dirname, '../public/index.html')
+validFrontendRoutes.forEach(stateRoute => {
+  app.get(stateRoute, (req, res, next) => {
+    res.sendFile(indexPath)
+  })
+})
+
+//static routes
+app.use(express.static(path.join(__dirname, '../public')))
 
 //error handling
 app.use((err, req, res, next) => {
@@ -53,7 +66,7 @@ app.use((err, req, res, next) => {
 
 const port = 3000
 
-db.sync()
+db.sync({force: true})
   .then(() => app.listen(port, () => console.log('Listening on port ' + port)))
   .catch(console.error)
 

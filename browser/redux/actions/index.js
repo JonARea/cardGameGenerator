@@ -8,7 +8,7 @@ const setCurrentUser = (currentUser) => ({
   currentUser
 })
 
-export const setCurrentUserThunk = user => dispatch => {
+export const handleLoginThunk = user => dispatch => {
   axios.post('/api/auth/local', user)
     .then(res => {
       dispatch(setCurrentUser(res.data))

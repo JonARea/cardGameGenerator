@@ -1,6 +1,7 @@
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
+import Login from './Login'
 
 const App = (props) => (
 
@@ -12,6 +13,7 @@ const App = (props) => (
       <p>
         {'Redux store: ' + props.reduxState}
       </p>
+      <Route path='/login' component={Login} />
     </div>
   </BrowserRouter>
 )

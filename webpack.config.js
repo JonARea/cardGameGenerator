@@ -1,24 +1,30 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: './browser/index.js',
   output: {
-    path: __dirname + '/browser/public',
+    path: __dirname + '/public',
     filename: 'bundle.js'
   },
+  context: __dirname,
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         options: {
-        presets: ['react', 'env']
+          presets: ['react', 'env', 'stage-2']
         }
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
-}
+};

@@ -68,10 +68,4 @@ router.post('/local', passport.authenticate('local'), (req, res) => {
   else res.status(401).send('Incorrect Username or Password')
 })
 
-router.get('/logout', (req, res, next) => {
-  req.logOut()
-  res.sendStatus(200)
-})
-
-
 module.exports = router
