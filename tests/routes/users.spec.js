@@ -17,3 +17,18 @@ describe('POST /api/users', function() {
 
   it('responds with an error when input is invalid')
 })
+
+describe('GET /api/users', function() {
+  it('responds with 200 and array of sanitized users', function(done) {
+    request.get('/api/users')
+      .set('accept', 'json')
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err)
+        res.body.should.be.an('array')
+        should.exist(res.body[0].email)
+        should.not.exist(res.body[0].password)
+        done()
+      })
+  })
+})
