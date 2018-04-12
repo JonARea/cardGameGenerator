@@ -23,9 +23,7 @@ const User = db.define('user', {
 const setSaltandHashPassword = (userInstance, optionsObject) => {
   if (userInstance.changed('password') || userInstance.isNewRecord) {
     return bcrypt.genSalt()
-      .then(salt => {
-        return bcrypt.hash(userInstance.password, salt)
-      })
+      .then(salt => bcrypt.hash(userInstance.password, salt))
       .then(hash => {
         userInstance.password = hash
         return userInstance
