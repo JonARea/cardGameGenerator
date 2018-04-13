@@ -1,3 +1,9 @@
 h2 {
   color: red;
 }
+
+.board {
+  height: 70vh;
+  width: 70vw;
+  background-color: green;
+}

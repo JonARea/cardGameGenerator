@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Login from './Login'
+import Game from './Game'
 
 const App = (props) => (
 
@@ -13,7 +14,8 @@ const App = (props) => (
       <p>
         {'Redux store: ' + props.reduxState}
       </p>
-      <Route path='/login' component={Login} />
+      <Route path="/game" component={Game} />
+      <Route path="/login" component={Login} />
     </div>
   </BrowserRouter>
 )
