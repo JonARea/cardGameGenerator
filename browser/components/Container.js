@@ -8,10 +8,12 @@ import DraggableBox from './DraggableBox'
 import snapToGrid from '../helpers/snapToGrid'
 
 const styles = {
-	width: 300,
-	height: 300,
+	width: '80vw',
+	height: '80vh',
 	border: '1px solid black',
 	position: 'relative',
+	backgroundColor: 'green',
+	margin: 'auto'
 }
 
 const collect = connect => ({
@@ -45,8 +47,9 @@ class Container extends Component {
 		super(props)
 		this.state = {
 			boxes: {
-				a: { top: 20, left: 80, title: 'Drag me around' },
-				b: { top: 180, left: 20, title: 'Drag me too' },
+				a: { top: 300, left: 80, title: 'Ace of Hearts' },
+				b: { top: 300, left: 20, title: 'King of Spades' },
+				c: { top: 300, left: 140, title: 'Jack of Diamonds' },
 			},
 		}
 	}

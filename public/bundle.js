@@ -29128,10 +29128,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var styles = {
-	width: 300,
-	height: 300,
+	width: '80vw',
+	height: '80vh',
 	border: '1px solid black',
-	position: 'relative'
+	position: 'relative',
+	backgroundColor: 'green',
+	margin: 'auto'
 };
 
 var collect = function collect(connect) {
@@ -29173,8 +29175,9 @@ var Container = function (_Component) {
 
 		_this.state = {
 			boxes: {
-				a: { top: 20, left: 80, title: 'Drag me around' },
-				b: { top: 180, left: 20, title: 'Drag me too' }
+				a: { top: 300, left: 80, title: 'Ace of Hearts' },
+				b: { top: 300, left: 20, title: 'King of Spades' },
+				c: { top: 300, left: 140, title: 'Jack of Diamonds' }
 			}
 		};
 		return _this;
@@ -37369,7 +37372,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var styles = {
-	border: '1px dashed gray',
+	height: '30vh',
+	width: '10vw',
+	border: '1px solid gray',
+	borderRadius: '4%',
 	padding: '0.5rem 1rem',
 	cursor: 'move'
 };

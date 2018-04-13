@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import shouldPureComponentUpdate from '../helpers/shouldPureComponentUpdate'
 
 const styles = {
-	border: '1px dashed gray',
+  height: '30vh',
+  width: '10vw',
+  border: '1px solid gray',
+  borderRadius: '4%',
 	padding: '0.5rem 1rem',
 	cursor: 'move',
 }
